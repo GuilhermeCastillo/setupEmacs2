@@ -31,6 +31,10 @@
 (use-package all-the-icons
   :ensure t)
 
+;; NerdTree
+
+(setq neo-window-fixed-size nil) ;; redimensionar nerdtree
+
 (use-package neotree
   :ensure t
   :config
@@ -39,7 +43,9 @@
   :bind (("C-\\" . 'neotree-toggle))) ;; tecla atom
 
 ;; tema
-
+(use-package rebecca-theme
+  :ensure t
+  :config (load-theme 'rebecca t))
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
