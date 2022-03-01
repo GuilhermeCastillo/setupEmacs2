@@ -10,9 +10,44 @@
 (column-number-mode t)               ;; exibe coluna atual na modeline
 (global-hl-line-mode t)              ;; exibe destaque de linha
 
+;; Pacotes
+(require 'package)
+(setq package-enable-at-startup nil) ;; desabilitar inicio de ativacao e pacotes
+
+
+;;MELPA -- repositório
+(add-to-list 'package-archives
+	     '("melpa" . "https://melpa.org/packages/"))
+
+(package-initialize) ;; iniciar pacotes
+
+(use-package auto-complete
+  :ensure t
+  :init
+  (progn
+    (ac-config-default)
+    (global-auto-complete-mode t)))
+
+(use-package all-the-icons
+  :ensure t)
+
+(use-package neotree
+  :ensure t
+  :config
+  (progn
+    (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
+  :bind (("C-\\" . 'neotree-toggle))) ;; tecla atom
+
+;; tema
+
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 ;; alertas visuais
 (setq visible-bell t)
+
 
 ;; espaçamento das bordas laterais
 (set-fringe-mode 10)
@@ -32,3 +67,15 @@
 ;; Organizando os backups
 
 (setq backup-directory-alist `(("." . "~/.saves")))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages (quote (molokai-theme auto-complete use-package))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
