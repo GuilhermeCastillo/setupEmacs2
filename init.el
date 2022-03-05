@@ -58,8 +58,9 @@
 ;; espaçamento das bordas laterais
 (set-fringe-mode 10)
 
-;; Ajustes
+;; Ajustes para sanidade mental
 (global-unset-key (kbd "C-z")) ;; desabilita o CTRL-Z (suspend frame)
+(delete-selection-mode t)      ;; O texto digitado substitui a seleção
 
 ;; Rolagem mais suave
 (setq mouse-wheel-scroll-amount '(2 ((shift) . 1)) ;; 2 linhas por vez
